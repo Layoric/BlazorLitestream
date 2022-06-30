@@ -23,6 +23,10 @@
         <ProjectReference Include="..\BlazorLitestream.ServiceModel\BlazorLitestream.ServiceModel.csproj" />
     </ItemGroup>
 
+    <Target Name="CreateAppDataFolder" AfterTargets="AfterPublish">
+        <MakeDir Directories="$(PublishDir)App_Data" Condition="!Exists('$(PublishDir)App_Data')" />
+    </Target>
+
     <PropertyGroup>
         <ClientDir>$(MSBuildProjectDirectory)/../BlazorLitestream.Client</ClientDir>
         <WwwRoot>$(ClientDir)/wwwroot</WwwRoot>
